@@ -28,17 +28,17 @@ public class GetWords {
         try {
             // 3. Send the request and receive the response synchronously
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+            
             // 4. Process the response
-            System.out.println("Status Code: " + response.statusCode());
-            System.out.println("Response Body: " + response.body());
+            ObjectMapper mapper = new ObjectMapper();
+            String[] words = mapper.readValue(response.body(), String[].class);
+            retVal = words;
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         
-        // TODO: Need to convert response.body() to JSON object
-        ObjectMapper mapper = new ObjectMapper();
+        
         retVal = new String[] {"test", "Ball", "four"};
         return retVal;
         
