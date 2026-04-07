@@ -125,7 +125,7 @@ public class PasswordGenerator{
         return inputChars;
     }
 
-    public static void main(){
+    public static void main(String[] args){
         System.out.println("Hello Password Generator!");
 
         String[] words;
