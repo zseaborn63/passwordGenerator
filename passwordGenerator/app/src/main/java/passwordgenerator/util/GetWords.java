@@ -28,7 +28,7 @@ public class GetWords {
         try {
             // 3. Send the request and receive the response synchronously
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            
+
             // 4. Process the response
             ObjectMapper mapper = new ObjectMapper();
             String[] words = mapper.readValue(response.body(), String[].class);
@@ -36,12 +36,9 @@ public class GetWords {
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+            retVal = new String[] {"error", "error", "error"};
         }
         
-        
-        retVal = new String[] {"test", "Ball", "four"};
         return retVal;
-        
     }
-    
 }
